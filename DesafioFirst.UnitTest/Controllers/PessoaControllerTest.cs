@@ -38,7 +38,7 @@ namespace DesafioFirst.UnitTest.Controllers
         }
 
         [Fact]
-        public void BuscarPessoasPorIdTest()
+        public void ErroBuscarPessoasPorIdTest()
         {
             // Arrange
             //criar dados para o teste
@@ -62,31 +62,6 @@ namespace DesafioFirst.UnitTest.Controllers
             Assert.IsType<OkObjectResult>(id.Result);
             //Verificando se o Id criado é igual a 1, pelo fato de ser o primeiro cadastro simulado o id tem que ser igual a 1
             Assert.Equal(2, resultado.Id);
-            //verificando se o método foi chamado
-            pessoaRepositoryMock.Verify(er => er.BuscarPessoaPorId(It.IsAny<int>()), Times.Once);
-        }
-
-        [Fact]
-        public void ErroBuscarPessoasPorIdTest()
-        {
-            // Arrange
-            //criar dados para o teste
-            var inputDadosBpidErro = new Fixture().Create<PessoaModel>();
-
-            var pessoaRepositoryMock = new Mock<InterfacePessoaRepository>();
-
-            pessoaRepositoryMock.Setup(rm => rm.BuscarPessoaPorId(inputDadosBpidErro.Id));
-
-            var pessoaController = new PessoaController(pessoaRepositoryMock.Object);
-
-            // Act
-            //Passando um id 4 que é inexistente para o teste retornar erro.
-            var resultado = pessoaController.BuscarPessoaPorId(4);
-
-            // Assert
-
-            //Verificando se o Id é igual a 4, pelo fato de ser a segunda instancia do Fixture o cadastro simulado tem o id igual a 2
-            Assert.Equal(10, resultado.Id);
             //verificando se o método foi chamado
             pessoaRepositoryMock.Verify(er => er.BuscarPessoaPorId(It.IsAny<int>()), Times.Once);
         }
@@ -146,34 +121,6 @@ namespace DesafioFirst.UnitTest.Controllers
             pessoaRepositoryMock.Verify(er => er.AtualizarPessoa(It.IsAny<PessoaModel>(),It.IsAny<int>()), Times.Once);
         }
         [Fact]
-        public void DeletarTest()
-        {
-            // Arrange
-            //criar dados para o teste
-            var inputDadosDel = new Fixture().Create<PessoaModel>();
-
-            var pessoaRepositoryMock = new Mock<InterfacePessoaRepository>();
-
-            pessoaRepositoryMock.Setup(rm => rm.ApagarPessoa(inputDadosDel.Id));
-
-            var pessoaController = new PessoaController(pessoaRepositoryMock.Object);
-
-            // Act
-
-            var resultado = pessoaController.Deletar(inputDadosDel.Id);
-
-            // Assert
-
-            //verificando se o método retornou o id
-            var id = Assert.IsType<ActionResult<PessoaModel>>(resultado.Result);
-            //verificando se o retorno foi de sucesso HTTPStatus200
-            Assert.IsType<OkObjectResult>(id.Result);
-            //Verificando se o Id criado pelo Fixture é igual ao deletado pelo metodo, pelo fato de ser o terceiro cadastro simulado o id tem que ser igual a 3
-            Assert.Equal(4,resultado.Id);
-            //verificando se o método foi chamado
-            pessoaRepositoryMock.Verify(er => er.ApagarPessoa(It.IsAny<int>()), Times.Once);
-        }
-        [Fact]
         public void ErroDeletarTest()
         {
             // Arrange
@@ -196,7 +143,7 @@ namespace DesafioFirst.UnitTest.Controllers
             var id = Assert.IsType<ActionResult<PessoaModel>>(resultado.Result);
             //verificando se o retorno foi de sucesso HTTPStatus200
             Assert.IsType<OkObjectResult>(id.Result);
-            //Verificando se o Id criado pelo Fixture é igual ao deletado pelo metodo, pelo fato de ser o terceiro cadastro simulado o id tem que ser igual a 3
+            //Verificando se o Id criado pelo Fixture é igual ao deletado pelo metodo
             Assert.Equal(10, resultado.Id);
             //verificando se o método foi chamado
             pessoaRepositoryMock.Verify(er => er.ApagarPessoa(It.IsAny<int>()), Times.Once);

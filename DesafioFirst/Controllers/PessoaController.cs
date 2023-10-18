@@ -20,6 +20,10 @@ namespace DesafioFirst.Controllers
         public async Task<ActionResult<List<PessoaModel>>> BuscarPessoas()
         {
             List<PessoaModel> pessoas = await _pessoaRepository.BuscarPessoas();
+            if (pessoas == null)
+            {
+                throw new Exception("Não foi encontrada nenhuma pessoa no banco de dados.");
+            }
             return Ok(pessoas);
         }
 
@@ -54,6 +58,10 @@ namespace DesafioFirst.Controllers
         public async Task<ActionResult<PessoaModel>> Deletar(int id)
         {
             bool deletado = await _pessoaRepository.ApagarPessoa(id);
+            if (deletado == false)
+            {
+                throw new Exception($"Pessoa para o ID: {id} não foi encontrada no banco de dados.");
+            }
             return Ok(deletado);
         }
     }

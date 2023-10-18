@@ -144,4 +144,3 @@ C:\Users\lf_ho\Downloads\desafioFirst\DesafioFirst.UnitTest\bin\Debug\net6.0\run
 C:\Users\lf_ho\Downloads\desafioFirst\DesafioFirst.UnitTest\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\lf_ho\Downloads\desafioFirst\DesafioFirst.UnitTest\bin\Debug\net6.0\DesafioFirst.dll
 C:\Users\lf_ho\Downloads\desafioFirst\DesafioFirst.UnitTest\bin\Debug\net6.0\DesafioFirst.pdb
-C:\Users\lf_ho\Downloads\desafioFirst\DesafioFirst.UnitTest\bin\Debug\net6.0\Bogus.dll
