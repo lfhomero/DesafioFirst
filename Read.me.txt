@@ -1,0 +1,24 @@
+Para que o código execute é necessário que o SqlServer 2019 esteja instalado, baixe em: https://go.microsoft.com/fwlink/p/?linkid=2216019&clcid=0x416&culture=pt-br&country=br
+
+Recomendável instalar a IDE VisualStudio, baixe em: https://visualstudio.microsoft.com/pt-br/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false
+
+Ao abrir o projeto na IDE, Acessar o arquivo appsetitings.json e inserir o usuario e senha do seu SGBD, nos campos:
+
+User Id = {usuário do SGBD}
+Password = {senha do SGBD}
+
+*OBS: A porta 1433 tem que está com acesso liberado para o protocolo TCP
+
+No console do Gerenciador de pacotes do Visual Studio deverá realizar o seguinte comando para criação do banco de dados no SQL Server utilizando o Entity Framework:
+
+Update-Database -Context DesafioFirstDB
+
+E o software estará pronto para ser excutado.
+
+Ao executar o projeto DesafioFirst, será retornado o Swagger com o CRUD da API REST.
+
+Ao executar o projeto DesafioFirst.UnitTest (no prompt de comando executar o comando "dotnet test"), será executado os testes unitários criados para os principais métodos.
+
+*OBS: Os testes unitários que iniciam com a palavra "Erro" devem retornar com falha.
+
+
